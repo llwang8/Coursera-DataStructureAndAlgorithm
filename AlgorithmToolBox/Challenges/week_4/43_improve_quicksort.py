@@ -23,7 +23,7 @@ def partition3(a, l, r):
     a[l], a[j] = a[j], a[l]
     x = a[j]
     s = j
-    for i in range(j+2, r+1):
+    for i in range(j+1, r+1):
         if a[i] == x:
             s += 1
             a[i], a[s] = a[s], a[i]
