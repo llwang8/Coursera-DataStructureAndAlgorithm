@@ -63,7 +63,7 @@ def longest_comm_subseq_of3_2(n, m, p, a, b, c):
                 if i==0 or j==0 or k==0:
                     memo[i][j][k] = 0
                 elif a[i-1] == b[j-1] == c[k-1]:
-                    memo[i][j][k] = memo[i-1][j-1][k-1 + 1
+                    memo[i][j][k] = memo[i-1][j-1][k-1] + 1
                 else:
                     memo[i][j][k] = max(max(memo[i-1][j][k], memo[i][j-1][k]), memo[i][j][k-1])
     return memo[n][m][p]

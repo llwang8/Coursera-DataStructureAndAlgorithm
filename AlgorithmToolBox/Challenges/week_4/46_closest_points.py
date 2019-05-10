@@ -15,7 +15,8 @@ def distance(x1, y1, x2, y2):
 
 
 def find_closest(points):
-    points_x_sorted = sorted(points, key=lambda x:(x[0], x[1]))
+    points_x_sorted = sorted(points, key=lambda x:x[0])
+    #points_y_sorted = sorted(points, key=lambda x:x[1])
     d = filter_x_get_min(points_x_sorted)
     return d
 
