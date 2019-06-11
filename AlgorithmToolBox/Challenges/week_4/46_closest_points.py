@@ -1,4 +1,4 @@
-#python3
+# python3
 """
 Coursera Specialization: Data Structure and Algorithm
 Course: Algorithm Toolbox
