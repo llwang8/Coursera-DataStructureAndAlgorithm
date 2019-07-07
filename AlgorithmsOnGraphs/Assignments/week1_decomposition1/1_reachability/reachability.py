@@ -1,4 +1,17 @@
-#Uses python3
+#python3
+"""
+Coursera Specialization: Data Structure and Algorithm
+Course: Algorithm on Graphs
+
+week 1 - 1 Finding an Exit from a maze
+
+Problem Introduction
+A maze is a rectangular grid of cells with walls between some of adjacent cells. You would like to check whether there is a path from a given cell to a given exit from a maze where an exit is also a cell that lies on the border of the maze (in the example shown to the right there are two exits: one on the left border and one on the right border). For this, you represent the maze as an undirected graph: vertices of the graph are cells of the maze, two vertices are connected by an undirected edge if they are adjacent and there is no wall between them. Then, to check whether there is a path between two given cells in the maze, it suffices to check that there is a path between the corresponding two vertices in the graph.
+
+Problem Description
+Task: Given an undirected graph and two distinct vertices 𝑢 and 𝑣, check if there is a path between 𝑢 and 𝑣.
+
+"""
 
 import sys
 

@@ -1,16 +1,35 @@
-#Uses python3
+#python3
+"""
+Coursera Specialization: Data Structure and Algorithm
+Course: Algorithm on Graphs
+
+week 2 - 2 Determine the order of courses
+
+Problem Introduction
+Now, when you are sure that there are no cyclic dependencies in the given CS curriculum, you would like to find an order of all courses that is consistent with all dependencies. For this, you find a topological ordering of the corresponding directed graph.
+
+Problem Description
+Task. Compute a topological ordering of a given directed acyclic graph (DAG) with 𝑛 vertices and 𝑚 edges.
+"""
 
 import sys
 
 def dfs(adj, used, order, x):
-    #write your code here
-    pass
+    used[x] = 1
+    for i in range(len(adj[x])):
+        if not used[adj[x][i]]:
+            dfs(adj, used, order, adj[x][i])
+    order.append(x)
 
 
 def toposort(adj):
     used = [0] * len(adj)
     order = []
-    #write your code here
+    for i in range(len(adj)):
+        if not used[i]:
+            dfs(adj, used, order, i)
+        #print(order)
+    order.reverse()
     return order
 
 if __name__ == '__main__':
