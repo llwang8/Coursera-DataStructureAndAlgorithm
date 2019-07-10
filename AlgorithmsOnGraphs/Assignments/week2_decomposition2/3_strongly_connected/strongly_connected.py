@@ -15,22 +15,39 @@ import sys
 
 sys.setrecursionlimit(200000)
 
-
-def number_of_strongly_connected_components(adj):
-    result = 0
-    visited = [0] * len(adj)
+def reverseEdges(adj):
+    rev_adj = [[] for _ in range(len(adj))]
     for i in range(len(adj)):
-        if not visited[i]:
-            dfs(adj, visited, i)
-        #if sum(visited) == len(adj):
-        result += 1
-    return result
+        for j in range(len(adj[i])):
+            rev_adj[adj[i][j]].append(i)
+    return rev_adj
 
-def dfs(adj, visited, x):
+def dfs(adj, visited, stacking, x):
     visited[x] = 1
     for i in range(len(adj[x])):
         if not visited[adj[x][i]]:
-            dfs(adj, visited, adj[x][i])
+            visited[adj[x][i]] = 1
+            dfs(adj, visited, stacking, adj[x][i])
+    stacking.append(x)
+
+
+def number_of_strongly_connected_components(adj):
+    result = 0
+    stacking = []
+    visited = [0] * len(adj)
+    for i in range(len(adj)):
+        if not visited[i]:
+            dfs(adj, visited, stacking, i)
+
+    rev_adj = reverseEdges(adj)
+    visited = [0] * len(adj)
+    while stacking:
+        x = stacking.pop()
+        if not visited[x]:
+            dfs(rev_adj, visited, [], x)
+            result += 1
+    return result
+
 
 if __name__ == '__main__':
     input = sys.stdin.read()
@@ -42,3 +59,5 @@ if __name__ == '__main__':
     for (a, b) in edges:
         adj[a - 1].append(b - 1)
     print(number_of_strongly_connected_components(adj))
+
+
